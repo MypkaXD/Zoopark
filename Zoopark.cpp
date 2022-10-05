@@ -119,9 +119,9 @@ public:
 int main() {
 	Zoopark zoopark = Zoopark();
 
-	Sparrow bird_first = Sparrow("Bird1");
-	Bird* bird_second = new Chiken("Bird2");
-	Bird* bird_third = new Owl("Bird3");
+	Sparrow bird_first = Sparrow("bird_first");
+	Bird* bird_second = new Chiken("bird_second");
+	Bird* bird_third = new Owl("bird_third");
 
 	std::cout << "The ID of " << bird_third->getName() << " is " << bird_third->getIdOfAnimal() << std::endl;
 
