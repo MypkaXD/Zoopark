@@ -7,10 +7,11 @@ private:
 	std::string m_name;
 	static int m_id;
 	static int m_numberOfAnimal;
+	int m_ID;
 public:
 	Animal(std::string name) : m_name(name) {
 		m_numberOfAnimal++;
-		m_id++;
+		m_ID = ++m_id;
 	}
 
 	int getNumberOfAnimal() const {
@@ -18,7 +19,7 @@ public:
 	}
 
 	int getIdOfAnimal() const {
-		return (m_id);
+		return (m_ID);
 	}
 
 	std::string getName() const {
@@ -91,6 +92,7 @@ public:
 class Zoopark {
 private:
 	std::vector <Animal*> m_animal;
+
 public:
 	void popBack() {
 		m_animal.pop_back();
@@ -103,6 +105,14 @@ public:
 	void voice() {
 		for (Animal* el : m_animal) {
 			el->voice();
+		}
+	}
+
+	void delAnimal(int id) {
+		for (int count = 0; count < m_animal.size(); count++) {
+			if (m_animal[count]->getIdOfAnimal() == id) {
+				m_animal.erase(m_animal.begin() + count);
+			}
 		}
 	}
 
@@ -128,9 +138,8 @@ int main() {
 	zoopark.pushBack(&bird_first);
 	zoopark.pushBack(bird_second);
 	zoopark.pushBack(bird_third);
-
-	zoopark.popBack();
-
+	std::cout << "The number of birds is " << zoopark.numberofBirds() << std::endl;
+	zoopark.delAnimal(2);
 
 	std::cout << "The number of birds is " << zoopark.numberofBirds() << std::endl;
 
